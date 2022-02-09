@@ -10,4 +10,8 @@ app.get('/', (req,res) => {
     res.render('notices')
 })
 
+app.get('/newnotice', (req,res) => {
+    res.render('form-notice')
+})
+
 app.listen(3000)

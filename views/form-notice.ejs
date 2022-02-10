@@ -18,8 +18,10 @@
               <div class="mb-3">
                 <label for="categorieNotice" class="form-label">Categoria</label>
                 <select id="categorieNotice" class="form-select">
-                  <option>ENEM</option>
-                  <option>Governo</option>
+                  <% categories.forEach(category=> { %>
+                    <option value="<%= category.pk_id_category %>"><%= category.name_category %> </option>
+                  <% }) %>
+                  
                 </select>
               </div>
               <div class="mb-3">

@@ -1,14 +1,13 @@
 const noticeController = require('../controllers/noticeController')
 const express = require('express')
+const categoryController = require('../controllers/categoryController')
 const router = express.Router()
 
 router.use(express.json())
 
 router.get('/', noticeController.selectNotices)
 
-router.get('/newnotice', (req,res) => {
-    res.render('form-notice')
-})
+router.get('/newnotice', noticeController.selectCategoriesForm)
 
 
 router.get('/mynoticies', (req,res) => {

@@ -3,39 +3,32 @@
     <body>
         <%- include('./partials/navbar') %>
             <div class="container mt-5">
-                <div class="card shadow mb-3">
-                    <div class="card-body d-flex justify-content-between">
-                        <div>
-                            <h5 class="card-title">Nova variante da covid-19 é descoberta</h5>
-                            <h5 class="lead">Postado por Luis Felipi, dia 09/02/2022, as 13:00 horas</h5>
-                        </div>
-                        <div class="d-flex justify-centent-center align-items-center">
-                            <button type="button" class="btn btn-secondary">Ler resumo</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card shadow mb-3">
-                    <div class="card-body d-flex justify-content-between">
-                        <div>
-                            <h5 class="card-title">Nova variante da covid-19 é descoberta</h5>
-                            <h5 class="lead">Postado por Luis Felipi, dia 09/02/2022, as 13:00 horas</h5>
-                        </div>
-                        <div class="d-flex justify-centent-center align-items-center">
-                            <button type="button" class="btn btn-secondary">Ler resumo</button>
+
+                <% if (Object.keys(notices).length === 0) { %>
+                    <div class="card shadow mb-3 mt-5">
+                        <div class="card-body text-center ">
+
+                            <h4 class="card-title">Nenhuma notícia cadastrada</h4>
+
                         </div>
                     </div>
-                </div>
-                <div class="card shadow mb-3">
-                    <div class="card-body d-flex justify-content-between">
-                        <div>
-                            <h5 class="card-title">Nova variante da covid-19 é descoberta</h5>
-                            <h5 class="lead">Postado por Luis Felipi, dia 09/02/2022, as 13:00 horas</h5>
-                        </div>
-                        <div class="d-flex justify-centent-center align-items-center">
-                            <button type="button" class="btn btn-secondary">Ler resumo</button>
-                        </div>
-                    </div>
-                </div>
+                    <% } %>
+
+                        <% notices.forEach(notice=> { %>
+                            <div class="card shadow mb-3">
+                                <div class="card-body d-flex justify-content-between">
+                                    <div>
+                                        <h5 class="card-title"><%= notice.title_notice %> </h5>
+                                        <h5 class="lead">Postado por <%= notice.name_user %>, dia <%= moment(notice.dt_cad_notice).format('DD/MM/YYYY') %>, as  <%= moment(notice.dt_cad_notice).format('HH:mm') %> horas</h5>
+                                    </div>
+                                    <div class="d-flex justify-centent-center align-items-center">
+                                        <button type="button" class="btn btn-secondary">Ler resumo</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+
+
             </div>
 
             <%- include('./partials/script-import') %>

@@ -16,6 +16,7 @@ exports.up = function(knex) {
       })
       .createTable('notices', function(tableNotices){
         tableNotices.increments('pk_id_notice').primary()
+        tableNotices.text('title_notice').notNullable()
         tableNotices.text('where_notice').notNullable()
         tableNotices.text('summary_notice').notNullable()
         tableNotices.datetime('dt_cad_notice').notNullable()

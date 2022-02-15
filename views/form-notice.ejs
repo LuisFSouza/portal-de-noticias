@@ -10,14 +10,14 @@
             <h3>Cadastrar nova notícia</h3>
           </div>
           <div class="card-body">
-            <form>
+            <form action="/newnotice" method="post">
               <div class="mb-3">
                 <label for="titleNotice" class="form-label">Titulo da notícia</label>
-                <input type="text" class="form-control" id="titleNotice">
+                <input type="text" class="form-control" id="titleNotice" name="titleNotice">
               </div>
               <div class="mb-3">
                 <label for="categorieNotice" class="form-label">Categoria</label>
-                <select id="categorieNotice" class="form-select">
+                <select class="form-select" name="categorieNotice">
                   <% categories.forEach(category=> { %>
                     <option value="<%= category.pk_id_category %>"><%= category.name_category %> </option>
                   <% }) %>
@@ -26,22 +26,20 @@
               </div>
               <div class="mb-3">
                 <label for="place" class="form-label">Local do ocorrido</label>
-                <input type="text" class="form-control" id="place">
+                <input type="text" class="form-control" id="place" name="place">
               </div>
 
               <div class="mb-3">
                 <label for="dateoccur" class="form-label">Data do ocorrido</label>
-                <input type="date" class="form-control" id="dateoccur">
+                <input type="date" class="form-control" id="dateoccur" name="dateoccur">
               </div>
 
               <div class="mb-3">
                 <label for="notice" class="form-label">Resumo da notícia</label>
-                <textarea type="text" rows="10" class="form-control" id="notice"></textarea>
+                <textarea type="text" rows="10" class="form-control" id="notice" name="notice"></textarea>
               </div>
 
-
-
-              <button type="submit" class="btn btn-primary">Cadastrar</button>
+              <button type="submit" id="btnsubmit" class="btn btn-primary">Cadastrar</button>
             </form>
           </div>
         </div>

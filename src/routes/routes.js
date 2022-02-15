@@ -5,10 +5,11 @@ const router = express.Router()
 
 router.use(express.json())
 
-router.get('/', noticeController.selectNotices)
+router.get('/', noticeController.renderViewNotices)
 
-router.get('/newnotice', noticeController.selectCategoriesForm)
+router.get('/newnotice', noticeController.renderCategoriesForm)
 
+router.post('/newnotice', noticeController.insertNotice)
 
 router.get('/mynoticies', (req,res) => {
     res.render('menu-notices')

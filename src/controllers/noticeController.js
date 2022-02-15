@@ -1,18 +1,31 @@
 const Notice = require('../models/Notice.js')
 const Category = require('../models/Category.js')
+var xss = require('xss')
 
 module.exports = {
-    async selectNotices(req, res) {
+    async renderViewNotices(req, res) {
         const notices = await Notice.selectNotices()
-        
-        console.log(notices)
+
         res.render('notices', { notices })
     },
 
-    async selectCategoriesForm(req, res) {
+    async renderCategoriesForm(req, res) {
         const categories = await Category.selectCategories()
-        
-        console.log(categories)
+
         res.render('form-notice', { categories })
+    },
+
+    async insertNotice(req, res) {
+        const title_notice = xss(req.body.titleNotice)
+        const fk_id_category = xss(req.body.categorieNotice)
+        const where_notice = xss(req.body.place)
+        const dt_cad_notice = new Date()
+        const fk_id_user = 1
+        const dt_occur_notice = xss(req.body.dateoccur)
+        const summary_notice = xss(req.body.notice)
+
+        const msg = await Notice.save({ title_notice, where_notice, summary_notice, dt_cad_notice, dt_occur_notice, fk_id_category, fk_id_user })
+        const categories = await Category.selectCategories()
+        res.render('form-notice', {msg, categories})
     }
 }

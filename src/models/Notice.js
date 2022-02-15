@@ -9,7 +9,19 @@ function selectNotices()
     })
 }
 
+function save(notice){
+  console.log(notice)
+  return db.insert(notice).into('notices')
+  .then( _ => { 
+    return { tipo: "sucesso", corpo: "Noticia cadastrada com sucesso!" }
+  })
+  .catch(erro => {
+    return { tipo: "erro", corpo: "Erro: " + erro }
+  })
+}
+
 module.exports = 
 {
-  selectNotices
+  selectNotices,
+  save
 }

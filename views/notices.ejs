@@ -4,7 +4,7 @@
         <%- include('./partials/navbar') %>
             <div class="container mt-5">
 
-                <% if (Object.keys(notices).length === 0) { %>
+                <% if (notices === undefined || Object.keys(notices).length === 0 ) { %>
                     <div class="card shadow mb-3 mt-5">
                         <div class="card-body text-center ">
 

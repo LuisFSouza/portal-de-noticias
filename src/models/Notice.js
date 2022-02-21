@@ -34,7 +34,11 @@ function selectNoticeById(id){
   .then(notice => {return notice})
   .catch(erro => {
     return { tipo: "erro", corpo: "Erro: " + erro }
-  })
+  }) 
+}
+
+function deleteNotice(id){
+  return db.del().from('notices').where('pk_id_notice', id)
   
 }
 module.exports = 
@@ -42,5 +46,6 @@ module.exports =
   selectNotices,
   save,
   update,
-  selectNoticeById
+  selectNoticeById,
+  deleteNotice
 }

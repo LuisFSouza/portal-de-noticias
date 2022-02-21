@@ -14,6 +14,8 @@ router.get('/notices/editnotice/:id', noticeController.renderViewUpdateNotice)
 
 router.post('/notices/editnotice/:id', noticeController.updateNotice)
 
+router.get('/notices/deletenotice/:id', noticeController.deleteNotice)
+
 router.get('/mynoticies', (req,res) => {
     res.render('menu-notices')
 })

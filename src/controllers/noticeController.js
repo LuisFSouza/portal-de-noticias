@@ -49,5 +49,12 @@ module.exports = {
         const notice = await Notice.selectNoticeById(id)
         const categories = await Category.selectCategories()
         res.render('form-notice', {notice, categories})
+    },
+
+    async deleteNotice(req, res) {
+      const id = Number(req.params.id)
+      await Notice.deleteNotice(id)
+
+      res.redirect('/')
     }
 }

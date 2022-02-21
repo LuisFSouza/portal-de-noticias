@@ -10,7 +10,6 @@ function selectNotices()
 }
 
 function save(notice){
-  console.log(notice)
   return db.insert(notice).into('notices')
   .then( _ => { 
     return { tipo: "sucesso", corpo: "Noticia cadastrada com sucesso!" }
@@ -20,8 +19,28 @@ function save(notice){
   })
 }
 
+function update(notice, id){
+  return db('notices').where('pk_id_notice', id).update(notice)
+  .then( _ => { 
+    return { tipo: "sucesso", corpo: "Noticia alterada com sucesso!" }
+  })
+  .catch(erro => {
+    return { tipo: "erro", corpo: "Erro: " + erro }
+  })
+}
+
+function selectNoticeById(id){
+  return db.select('*').from('notices').innerJoin('categories', 'pk_id_category', 'fk_id_category').where('pk_id_notice', id ).first()
+  .then(notice => {return notice})
+  .catch(erro => {
+    return { tipo: "erro", corpo: "Erro: " + erro }
+  })
+  
+}
 module.exports = 
 {
   selectNotices,
-  save
+  save,
+  update,
+  selectNoticeById
 }

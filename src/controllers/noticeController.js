@@ -1,12 +1,19 @@
 const Notice = require('../models/Notice.js')
 const Category = require('../models/Category.js')
 var xss = require('xss')
+const moment = require('moment')
 
 module.exports = {
     async renderViewNotices(req, res) {
         const notices = await Notice.selectNotices()
 
         res.render('notices', { notices })
+    },
+
+    async renderViewMyNotices(req, res){
+        id = 1
+        const notices = await Notice.selectNoticeByUser(id)
+        res.render('menu-notices', {notices})
     },
 
     async renderCategoriesForm(req, res) {
@@ -55,6 +62,6 @@ module.exports = {
       const id = Number(req.params.id)
       await Notice.deleteNotice(id)
 
-      res.redirect('/')
+      res.redirect('/mynoticies')
     }
 }

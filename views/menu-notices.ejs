@@ -14,44 +14,40 @@
                               <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Titulo</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Usuário</th>
+                                <th scope="col">Data de cadastro</th>
+                                <th scope="col">Local</th>
+                                <th scope="col">Categoria</th>
                                 <th scope="col">Ações</th>
                               </tr>
                             </thead>
                             <tbody>
+
+                              <% notices.forEach(notice=> { %>
                               <tr>
-                                <th scope="row">1</th>
-                                <td>Nova variante da covid-19 é descoberta</td>
-                                <td>09/02/2022</td>
-                                <td>Luis Felipi</td>
+                                <th scope="row"><%= notice.pk_id_notice %></th>
+                                <td><%= notice.title_notice %></td>
+                                <td><%= moment(notice.dt_cad_notice).format('DD/MM/YYYY') %></td>
+                                <td><%= notice.where_notice %></td>
+                                <td><%= notice.name_category %></td>
+                                
                                 <td>
-                                    <a href="#" class="btn btn-secondary">Excluir</a>
-                                    <a href="#" class="btn btn-primary">Alterar</a>
+                                    <a href="/notices/deletenotice/<%= notice.pk_id_notice %>" class="btn btn-secondary">Excluir</a>
+                                    <a href="/notices/editnotice/<%= notice.pk_id_notice %>" class="btn btn-primary">Alterar</a>
                                 </td>
                               </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Nova variante da covid-19 é descoberta</td>
-                                <td>09/02/2022</td>
-                                <td>Luis Felipi</td>
-                                <td>
-                                    <a href="#" class="btn btn-secondary">Excluir</a>
-                                    <a href="#" class="btn btn-primary">Alterar</a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>Nova variante da covid-19 é descoberta</td>
-                                <td>09/02/2022</td>
-                                <td>Luis Felipi</td>
-                                <td>
-                                    <a href="#" class="btn btn-secondary">Excluir</a>
-                                    <a href="#" class="btn btn-primary">Alterar</a>
-                                </td>
-                              </tr>
+                              <% }) %>
                             </tbody>
+                            
                           </table>
+                          <% if (notices === undefined || Object.keys(notices).length === 0 ) { %>
+                            <div class="card shadow mb-3 mt-5">
+                                <div class="card-body text-center ">
+            
+                                    <h4 class="card-title">Nenhuma notícia cadastrada</h4>
+            
+                                </div>
+                            </div>
+                            <% } %>
                     </div>
                 </div>
               

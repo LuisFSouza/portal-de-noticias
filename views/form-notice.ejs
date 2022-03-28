@@ -27,7 +27,7 @@
                               <label for="categorieNotice" class="form-label">Categoria</label>
                               <select class="form-select" name="categorieNotice">
                                 <% categories.forEach(category=> { %>
-                                  <option value="<%= typeof notice !== 'undefined' ? 1 : category.pk_id_category %>">
+                                  <option value="<%= category.pk_id_category %>">
                                     <%= category.name_category %>
                                   </option>
                                   <% }) %>

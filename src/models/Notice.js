@@ -6,7 +6,7 @@ function selectNotices()
     .then(notices => { return notices })
     .catch(erro => {
       return { tipo: "erro", corpo: "Erro: " + erro }
-    })
+    }) 
 }
 
 function save(notice){
@@ -37,6 +37,14 @@ function selectNoticeById(id){
   }) 
 }
 
+function selectNoticeByUser(id){
+  return db.select('*').from('notices').innerJoin('categories', 'pk_id_category', 'fk_id_category').where('fk_id_user', id )
+  .then(notice => {return notice})
+  .catch(erro => {
+    return { tipo: "erro", corpo: "Erro: " + erro }
+  }) 
+}
+
 function deleteNotice(id){
   return db.del().from('notices').where('pk_id_notice', id)
   
@@ -47,5 +55,6 @@ module.exports =
   save,
   update,
   selectNoticeById,
-  deleteNotice
+  deleteNotice,
+  selectNoticeByUser
 }

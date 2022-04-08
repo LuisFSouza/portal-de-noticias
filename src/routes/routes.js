@@ -29,4 +29,6 @@ router.get('/users/edituser/:id', userController.renderViewUpdateUser)
 
 router.post('/users/edituser/:id', userController.updateUser)
 
+router.get('/users/deleteuser/:id', userController.deleteUser)
+
 module.exports = router

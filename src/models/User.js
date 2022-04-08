@@ -36,11 +36,16 @@ function save(users){
         return { tipo: "erro", corpo: "Erro: " + erro }
       })
   }
+  function deleteUser(id){
+    return db.del().from('users').where('pk_id_user', id)
+  }
+
 
 module.exports = 
 {
   save,
   selectUsers,
   selectUserById,
-  update
+  update,
+  deleteUser
 }

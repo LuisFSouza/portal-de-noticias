@@ -37,4 +37,10 @@ module.exports = {
         const user = await User.selectUserById(id)
         res.render('form-user', {user})
     },
+
+    async deleteUser(req, res){
+        const id = Number(req.params.id)
+        await User.deleteUser(id)
+        res.redirect('/users')
+    },
 }

@@ -23,4 +23,10 @@ router.get('/users/newuser', userController.renderViewFormUsers)
 
 router.post('/users/newuser', userController.insertUser)
 
+router.get('/users', userController.renderViewUsers)
+
+router.get('/users/edituser/:id', userController.renderViewUpdateUser)
+
+router.post('/users/edituser/:id', userController.updateUser)
+
 module.exports = router

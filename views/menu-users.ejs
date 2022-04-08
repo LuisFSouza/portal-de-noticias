@@ -1,0 +1,59 @@
+<%- include('./partials/head') %>
+
+    <body>
+        <%- include('./partials/navbar') %>
+            <div class="container mt-5">
+
+                <div class="card shadow mb-3">
+                    <div class="card-header text-center">
+                        <h3>Usuários</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Login</th>
+                                <th scope="col">Senha</th>
+                                <th scope="col">Ações</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              <% users.forEach(user=> { %>
+                              <tr>
+                                <th scope="row"><%= user.pk_id_user %></th>
+                                <td><%= user.name_user %></td>
+                                <td><%= user.email_user %></td>
+                                <td><%= user.login_user %></td>
+                                <td><%= user.password_user %></td>
+                                
+                                <td>
+                                    <a href="/users/deleteuser/<%= user.pk_id_user %>" class="btn btn-secondary">Excluir</a>
+                                    <a href="/users/edituser/<%= user.pk_id_user %>" class="btn btn-primary">Alterar</a>
+                                </td>
+                              </tr>
+                              <% }) %>
+                            </tbody>
+                            
+                          </table>
+                          <% if (users === undefined || Object.keys(users).length === 0 ) { %>
+                            <div class="card shadow mb-3 mt-5">
+                                <div class="card-body text-center ">
+            
+                                    <h4 class="card-title">Nenhum usuário cadastrado</h4>
+            
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+              
+            </div> 
+            
+            <%- include('./partials/script-import') %>
+    </body>
+
+    </html>

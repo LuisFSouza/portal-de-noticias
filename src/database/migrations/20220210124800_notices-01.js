@@ -9,6 +9,7 @@ exports.up = function(knex) {
         tableUsers.text('login_user').notNullable()
         tableUsers.text('name_user').notNullable()
         tableUsers.text('email_user').notNullable()
+        tableUsers.text('password_user').notNullable()
       })
       .createTable('categories', function(tableCategories){
         tableCategories.increments('pk_id_category').primary()

@@ -1,0 +1,49 @@
+<%- include('./partials/head') %>
+
+  <body>
+    <%- include('./partials/navbar') %>
+
+      <% if (typeof user !=='undefined' ) { %>
+        <% var title="Alterar Usuário" %>
+          <% var route="/users/edituser/" +user.pk_id_user %>
+            <% } else { %>
+              <% var title="Novo Usuário" %>
+                <% var route="/users/newuser" %>
+                  <% } %>
+
+                    <div class="container mt-5">
+
+                      <div class="card shadow mb-3">
+                        <div class="card-header text-center">
+                          <h3><%= title %></h3>
+                        </div>
+                        <div class="card-body">
+                          <form action="<%= route %>" method="post">
+                            <div class="mb-3">
+                              <label for="nameUser" class="form-label">Nome do usuário</label>
+                              <input type="text" class="form-control" id="nameUser" name="nameUser" value="<%= typeof user !== 'undefined' ? user.name_user : null %>">
+                            </div>
+                            <div class="mb-3">
+                              <label for="emailUser" class="form-label">Email do usuário</label>
+                              <input type="text" class="form-control" id="emailUser" name="emailUser" value="<%= typeof user !== 'undefined' ? user.email_user : null %>">
+                            </div>
+                            <div class="mb-3">
+                              <label for="loginUser" class="form-label">Login do usuário</label>
+                              <input type="text" class="form-control" id="loginUser" name="loginUser" value="<%= typeof user !== 'undefined' ? user.login_user : null %>">
+                            </div>
+                            <div class="mb-3">
+                              <label for="passwordUser" class="form-label">Senha do usuário</label>
+                              <input type="text" class="form-control" id="passwordUser" name="passwordUser" value="<%= typeof user !== 'undefined' ? user.password_user : null %>">
+                            </div>
+
+                            <button type="submit" id="btnsubmit" class="btn btn-primary">Cadastrar</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+                    <%- include('./partials/script-import') %>
+  </body>
+
+
+  </html>
